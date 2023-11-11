@@ -1,0 +1,157 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { Code } from "astro:components";
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="container">
+    <Header title={SITE_TITLE} />
+    <main>
+        <h1>Frequently Asked Questions:</h1>
+        <dl class="dinkus">
+          <di>What is your intention?  Your goal?</di>
+          <dd>
+            <p>
+              To take a stand for a much needed new consciousness, personal and shared, expanded and adapted to the perils
+              of our "modern" world.  And from this new consciousness, a new social fabric of mutual care and collective
+              human magesty.
+            </p> 
+            <p>
+              As is, our society has become very unwell physically, mentally, and emotionally - 
+              largely for spiritual reasons.  This is notably a consequence, in combination, of unhinged technologies,
+              philosophies (e.g. "scientific materialism" and "Critical Theory"), and a general anti-family ethos.  Together 
+              these have given only the illusion of new freedoms, while actually enslaving us and undermining our humanity. 
+            </p>
+            <p>
+              For a new enlightenment, seeking a solution(s) through a return to "authentic" or robust 
+              spirituality/religiosity is sensible...though ultimately what is needed is a profound new depth of wisdom. 
+              Both evil and good have "collective consciousness". The former we participate in through ignorance.  The latter
+              through purpose, founded on divine principles.  It starts in the power of gratitude: for our earth, connection
+              to nature, artistic expression, revealed metaphysic...and a mysticism that connects us with God. These 
+              in fact are our birthright, though now largely lost - precisely when we need them most. A call 
+              simply to return to the world of that past, will not heal us.  I am stepping into a new kind of future, 
+              where spirituality is central, noble, and awe inspiring.
+            </p>
+          </dd>
+
+          <di>Is this a religion?  Or even a cult?</di>
+          <dd>
+            <p>
+              Mankind needs spirituality; not a new religion.  Soul Sovereignty is for everyone, regardless
+              of what religion they profess.  The goal is to mature in relationship to Self
+              and the divine with the wisdom that atheistic or religious leaders alike - too often
+              dismiss or overlook.  The result is improved relationship to self, your soul-mate, your family, your
+              friends, and more.  This is in contrast to a cult, which destroys relationships and gives
+              your sovereignty away to another.  Ironically, current Western culture has already powerfully manifested 
+              this cult dynamic.  Thus, a journey into Soul Sovereignty is actually the process of <em>exiting
+              the cult you are already in.</em>
+            </p>
+          </dd>
+
+          <di>Is this something you "join"?</di>
+          <dd>
+            <p>
+              Soul Sovereignty is foremost a journey of learning and, as much as possible, a community.
+              Venues will be created and maintained, whether online or in person, where
+              possible.  However, the bond between each of us participating in the journey is ultimately 
+              in our hearts rather than in a directory.  
+            </p>
+          </dd>
+
+          <di>What doctrines or "beliefs" do you profess in Soul Sovereignty?</di>
+          <dd>
+            <p>
+              In lieu of doctrines, Soul Sovereignty holds "principles" as axiomatic (e.g. gratitude, truth, love,
+              justice).  However, I do have two key professions.  First, "non-duality"...a metaphysical expression
+              of belief in God.  In Western terms, it is akin to the "panentheism" expressed by Thomas Aquinas (this
+              is distinct from "pantheism").  Second, I profess adherence to the morals of what Erik Erikson calls 
+              "the generative man."  One consequence of this is that, instead of pursuing a path of "minimal suffering",
+              my path aims at the maturation of the soul.  <u>Comfort is not a virtue</u>.  Accordingly, I will face all 
+              challenges necessary to honor the sacredness of life - and its proper cycle.  Likewise, I will not steal 
+              from others these same challenges needed for their growth.
+            </p>
+            <p>
+              Taken together, non-duality and "generativity" become core to a spiritual path I call the 
+              "Gaiac Way" or even "Gaiac Magic".    
+            </p>
+          </dd>
+
+          <di>From where do you get your knowledge?</di>
+          <dd>
+            <p>
+              A partial answer is "everywhere".  Wisdom is where you find it, whether from observing
+              a child play, the words and insights of a luminary, or consulting sacred scriptures.  For me personally,
+              "sacred scriptures" is usually the bible - though I also find the divine in scriptures of other 
+              religions as well.  Furthermore, the common language of knowing, is myth; a truth in story form. Sacred texts
+              are usually the best place from which to restore to use the great and precious myths of mankind. 
+            </p>
+            <p>
+              Ultimately, however, the complete answer can only be answered...by you.  Take in what you can,
+              and then answer for yourself "where did this come from?" This is part of self-observation, without
+              which the soul will not grow.
+            </p>
+          </dd>
+
+          <di>In referencing knowledge and wisdom, are you a teacher of esotericism?</di>
+          <dd>
+            <p>
+              Wisdom and esotericism, it seems, are two sides of the same coin. Consider: If esotercism is "secret" 
+              or hidden knowledge and, in contrast, wisdom is available freely for all, then why are there so few who are wise?
+              I'll then leave it to my listeners of whether I'm sharing wisdom or esotericism.  Ultimately I have no intent of 
+              gatekeeping secrets.  However, I also share what each is ready to hear - when they are ready to hear it.  There 
+              is a time and place for everything. I'm sure the same is true in reverse, for those wiser than myself.
+            </p>
+          </dd>
+
+          <di>Are you a "New Ager"?  Or otherwise, what "are" you?</di>
+          <dd>
+            <p>
+              A casual perusal of "New Ageism" allegedly includes such things as: relativism, all paths lead to God, 
+              there is no good or evil, monism/pantheism, the material world is an "illusion", affinity for "UFO-ism", evolution towards 
+              one world religion, and intentioning to have minimal or no children.  I adhere to none of the above.  If I cherry-pick a topic 
+              like re-incarnation...I neither believe nor disbelieve this. Rather, for me the language of re-incarnation is 
+              a window through which people share their spiritual perceptions or even experiences.  In that 
+              language, I simply listen for understanding.
+            </p>
+            <p>
+              On the other hand, there are other alleged aspects of New Ageism I do profess.  For example: the value of
+              personal development, bodily or mental illness typically has a spiritual component, or the spiritual "becoming God"
+              known as "Theosis".  Of course, at least historically, these are also ideas that Christianity adheres to.  And yes, 
+              Theosis is of Christian origin.  Similarly, "personal development" has its corollary in what Christians call "sanctification". 
+            </p>
+            <p>
+              Even so, I do not claim to be either Christian or New Age. If you give me either of these or similar labels, 
+              it is of no consequence to me.  However, what I claim for myself has its closest 
+              equivalent in "spiritual alchemy" and shamanism. Indeed I do attest to the healing power, if used in a proper sacred context, of entheogens 
+              (e.g. plant medicine psychadelics).
+            </p>
+          </dd>
+        </dl>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+/* Reset default list styles */
+  dl {
+    list-style: none;
+    counter-reset: custom-counter; /* Initialize the custom counter */
+  }
+
+  di::before {
+    counter-increment: custom-counter; /* Increment the custom counter for each <dt> */
+    content: "Question " counter(custom-counter) ": "; /* Use the custom counter value and add your text */
+    font-weight: bold;
+    margin-right: 0.5em; /* Add some spacing */
+    display: inline-block;
+  }
+
+</style>

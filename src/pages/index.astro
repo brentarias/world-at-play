@@ -1,51 +1,118 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import bio from "/assets/Peterson_square.png?url";
+// import bio from "../assets/Peterson_square.png?url";
+// import bio2 from "../assets/Brent_plain.jpg?url";
+import bio2 from "/assets/Peterson_square_sitting_4.webp?url";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body class="container">
-		<Header title={SITE_TITLE} />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/pages/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-			<p><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi similique totam nobis voluptatibus vitae exercitationem ratione iure amet sequi consequuntur, autem temporibus sunt facilis quasi quidem tempore dicta impedit necessitatibus!</span><span>Laudantium illo deleniti cumque cupiditate accusantium voluptatem ad odit repellat soluta quasi vitae, impedit facilis, magni officia dolorem laboriosam dignissimos. Sint quidem sit omnis nesciunt nam sunt nemo exercitationem saepe.</span><span>Dolores laudantium itaque, error cumque, quisquam ex incidunt, atque quidem numquam vel facere quasi aperiam quod fugit eveniet obcaecati sit odio iusto perferendis distinctio optio dolor ipsa qui nulla? Sint.</span><span>Aut ut quas recusandae, mollitia aperiam voluptatum a deleniti nam molestiae expedita quod modi aliquid iste eos, consectetur earum dolores illo consequuntur dolor ullam omnis voluptatibus commodi ipsam aliquam? Sapiente.</span><span>Quos est sit nisi libero. Omnis repellendus dicta quo, veniam officiis pariatur maiores rerum a nemo ducimus, ipsam mollitia quidem aliquam fugiat itaque qui. In tenetur hic enim corporis labore?</span></p>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="container">
+    <Header title={SITE_TITLE} />
+    <main>
+      <section>
+        <h1 >THAT WE MAY ALL AWAKEN, TOGETHER...</h1>
+        <p>
+          Mankind must transform if we are to thrive and fulfill our destiny, no less survive the coming darkness.  If you have 
+          found this message, you are invited to explore further.
+        </p>
+
+        <!-- Card 1 -->
+        <div class="dinkus">
+          <div class="card reverse">
+            <!-- <div class="height-1 flex-2 photo" style={`background-image: url(${bio})`}></div> -->
+            <div class="flex-2">
+              <img src={bio} />
+            </div>            
+            <div class="flex-3">
+              <hgroup>
+                <h1>Welcome, Seeker</h1>
+                <h2>My name is Brent Arias.</h2>
+              </hgroup>
+              <p>
+                My purpose is both to learn and spread the knowledge of being FULLY human, with
+                all the transcendent strength, beauty, and dignity of that birthright.  I offer
+                online instruction (via youtube, X, Locals, and Rumble) as well as an invitation to
+                forgotten paths of initiation and transformation - sacred journeys - for you to 
+                discover <em>the source of your power</em>.   
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="dinkus">
+        <h1>Do You <em>Know</em> The Question?</h1>
+        <p>
+          Despite having more material wealth and greater freedoms than prior generations, we have today more 
+          broken relationships, depression, addiction, sickness and financial anxiety than ever before.  Personal wellness
+          has languished between the old ways we've abandoned or forgotten...and the new ways we've yet to discover.
+        </p>
+        <blockquote>
+          One does not become enlightened by imagined figures of light, but by making the darkness conscious.
+          The latter procedure, however, is disagreeable and therefore not popular.
+          <footer><cite>-Carl Jung</cite></footer>
+        </blockquote>
+        <p>
+          Soul Sovereignty is the path of healing and maturation of Self as we enter the third age 
+          of the second turn of our world. The call towards this ascent is for each of us to hear and, 
+          to the best of our ability, make our response.  Find who you really are, and tell your story, lest 
+          these things be dictated to you by forces of decay.  
+        </p><br />
+      </section>
+
+
+      <!-- Card 2 -->
+      <section class="dinkus">
+        <div class="card">
+          <div class="flex-2">
+            <img src={bio2} />
+          </div>
+          <div class="flex-3">
+            <hgroup>
+              <h1>Do You Truly Know What You Want?</h1>
+              <h2>Would you like to find out?</h2>
+            </hgroup>
+            <p>
+              Our real desires and potential are well protected
+              behind a lifetime of lies we've told ourselves or allowed 
+              ourselves to be told.  Repurposing a quote from the movie The Matrix:
+            </p>
+              <blockquote>
+               "Why do my eyes hurt?"<br />"...Because you have never used them before."
+              </blockquote>
+            <p>
+              I ask that you be ready to take yourself on.  The real you
+              has so much more life to live, and to give.  Let's walk together,
+              finding our Soul Sovereignty.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="dinkus">
+        <h1>A Beginning..</h1>
+        <blockquote>
+          "The strength of a person's spirit would then be measured by how much 'truth' 
+          he could tolerate, or more precisely, to what extent he needs to have it diluted, 
+          disguised, sweetened, muted, falsified."
+          <footer><cite>-Friedrich Nietzsche, Beyond Good and Evil</cite></footer>
+        </blockquote>
+
+        <blockquote>
+          "...Enter His gates with thanksgiving..."
+          <footer><cite>-Psalm 100</cite></footer>
+        </blockquote>
+      </section>
+
+    </main>
+    <Footer />
+  </body>
 </html>

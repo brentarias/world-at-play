@@ -1,67 +1,111 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
-body {
-	font-family: Verdana, sans-serif;
-	margin: auto;
-	padding: 20px;
-	max-width: 65ch;
-	text-align: left;
-	background-color: #fff;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	line-height: 1.5;
-	color: #444;
+* {
+	/* box-sizing: border-box; */
+	font-family: "GothicLight";
+	--font-family: "GothicLight";
+	--font-weight: 600;
+	--font-size: 20px;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-strong,
-b {
-	color: #222;
+
+
+/* Register your custom font family and tell the browser where to find it. */
+@font-face {
+	font-family: 'Uncial';
+	src: url('https://fonts.gstatic.com/s/uncialantiqua/v20/N0bM2S5WOex4OUbESzoESK-i-MfWQZQ.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+} 
+
+@font-face {
+	font-family: 'GothicLight';
+	src: url('https://fonts.gstatic.com/s/medievalsharp/v26/EvOJzAlL3oU5AQl2mP5KdgptMqhwMg.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+} 
+
+.dinkus::after {
+	content: "";
+	background-image: url('/assets/dinkus_black_2_alpha.png');
+	height: 100px;
+	background-size: contain;
+	background-position: center;
+	display: block;
 }
-a {
-	color: #3273dc;
+
+.hug-down{
+	margin-bottom: 0px !important;
 }
-nav a {
-	margin-right: 10px;
+.hug-up{
+	margin-top: 40px !important;
 }
-textarea {
-	width: 100%;
-	font-size: 16px;
+
+.card {
+	border: var(--border-width) solid var(--card-border-color);
+	box-shadow: var(--card-box-shadow);
+	border-radius: var(--border-radius);
+	margin: var(--block-spacing-vertical) 0;
+	background: var(--card-background-color);
+	padding: var(--block-spacing-vertical) var(--block-spacing-horizontal);
+	/* padding: var(--grid-spacing-horizontal) var(--block-spacing-horizontal); */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 50px;
+
+	/* >.photo {
+		background-size: cover;
+		background-position: center;
+		align-self:center;
+		border-radius: 10px;
+	}
+	.height-3{
+		height: 55dvw;
+	}
+	.height-2{
+		height: 40dvw;
+	}
+	.height-1{
+		height: 25dvw;
+	} 
+	
+	*/
+
+	& div>img {
+		width: 100%;
+	}
+
+	.flex-4 {
+		flex: 4;
+	}
+	.flex-3 {
+		flex: 3;
+	}
+	.flex-2 {
+		flex: 2;
+	}
+	.flex-1 {
+		flex: 1;
+	}
 }
-input {
-	font-size: 16px;
+
+.reverse,
+.toggle:nth-child(odd) {
+	flex-direction: row-reverse;
 }
-content {
-	line-height: 1.6;
-}
-table {
-	width: 100%;
-}
-img {
-	max-width: 100%;
-	height: auto;
-}
-code {
-	padding: 2px 5px;
-	background-color: #f2f2f2;
-}
-pre {
-	padding: 1rem;
-}
-pre > code {
-	all: unset;
-}
-blockquote {
-	border: 1px solid #999;
-	color: #222;
-	padding: 2px 0px 2px 20px;
-	margin: 0px;
-	font-style: italic;
+
+/* Responsive styles for smaller screens */
+@media (width < 768px) {
+	.card {
+		flex-direction: column;
+		gap:unset;
+		>.photo {
+			padding: 100px;
+		}
+	}
+
+	.card:nth-child(odd) {
+		flex-direction: column;
+	}
+
 }

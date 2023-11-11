@@ -2,34 +2,91 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getCollection } from 'astro:content';
+import { SITE_TITLE, SITE_DESCRIPTION, type Post } from '../../consts';
 import FormattedDate from '../../components/FormattedDate.astro';
+import { sanityClient } from 'sanity:client';
+import SanityImage from '../../components/SanityImage.astro';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-);
+// import { getCollection } from 'astro:content';
+// const posts = (await getCollection('blog')).sort(
+// 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+// );
+const posts = await sanityClient.fetch(`*[_type == "post" && defined(publishedAt)] | order(publishedAt desc)`);
+
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="dark">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
+			main {
+				width: 960px;
+			}
 			ul {
-				list-style-type: none;
-				padding: unset;
-			}
-			ul li {
 				display: flex;
+				flex-wrap: wrap;
+				gap: 2rem;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
 			}
-			ul li :global(time) {
-				flex: 0 0 130px;
-				font-style: italic;
-				color: #595959;
+			ul li {				
+				list-style: none;
+				width: calc(50% - 1rem);
 			}
-			ul li a:visited {
-				color: #8e32dc;
+			ul li * {
+				text-decoration: none;
+				transition: 0.2s ease;
+			}
+			ul li:first-child {
+				width: 100%;
+				margin-bottom: 1rem;
+				text-align: center;
+			}
+			ul li:first-child :global(img) {
+				width: 100%;
+			}
+			ul li:first-child .title {
+				font-size: 2.369rem;
+			}
+			ul li :global(img) {
+				margin-bottom: 0.5rem;
+				border-radius: 12px;
+			}
+			ul li a {
+				display: block;
+			}
+			.title {
+				margin: 0;
+				color: rgb(var(--black));
+				line-height: 1;
+			}
+			.date {
+				margin: 0;
+				color: rgb(var(--gray));
+			}
+			ul li a:hover h4,
+			ul li a:hover .date {
+				color: rgb(var(--accent));
+			}
+			ul a:hover :global(img) {
+				box-shadow: var(--box-shadow);
+			}
+			@media (max-width: 720px) {
+				ul {
+					gap: 0.5em;
+				}
+				ul li {
+					width: 100%;
+					text-align: center;
+				}
+				ul li:first-child {
+					margin-bottom: 0;
+				}
+				ul li:first-child .title {
+					font-size: 1.563em;
+				}
 			}
 		</style>
 	</head>
@@ -39,13 +96,35 @@ const posts = (await getCollection('blog')).sort(
 			<section>
 				<ul>
 					{
-						posts.map((post) => (
+						posts.map((post : Post, index: number) => (
 							<li>
-								<FormattedDate date={post.data.pubDate} />
-								<a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+								<a href={`/blog/${post.slug.current}/`}>
+									{ index == 0 ? 
+										<SanityImage width={1280} height={640} node={post.mainImage} /> :
+										<SanityImage width={720} height={360} node={post.mainImage} />										
+									}
+									<h4 class="title">{post.title}</h4>
+									<p class="date">
+										<FormattedDate date={new Date(post.publishedAt)} />
+									</p>									
+								</a>
 							</li>
 						))
-					}
+					}					
+
+					<!-- {
+						posts.map((post ) => (
+							<li>
+								<a href={`/blog/${post.slug}/`}>
+									<img width={720} height={360} src={post.data.heroImage} alt="" />
+									<h4 class="title">{post.data.title}</h4>
+									<p class="date">
+										<FormattedDate date={post.data.pubDate} />
+									</p>
+								</a>
+							</li>
+						))
+					} -->
 				</ul>
 			</section>
 		</main>

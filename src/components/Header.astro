@@ -6,22 +6,18 @@ import { SITE_TITLE } from '../consts';
 
 <nav class="container">
 	<ul>
-		<li class="logo"><a href="#">{SITE_TITLE}</a></li>
+		<li class="logo"><a href="/">{SITE_TITLE}</a></li>
 	</ul>
 	<input class="menu-btn" type="checkbox" id="menu-btn" />
 	<label class="menu-icon" for="menu-btn">
-		<span class="nav-icon">
-			<svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="16px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-				<line x1="3" y1="12" x2="21" y2="12"></line>
-				<line x1="3" y1="6" x2="21" y2="6"></line>
-				<line x1="3" y1="18" x2="21" y2="18"></line>
-			  </svg>			
-		</span>
+		<span class="nav-icon" style="font-size: 1.6em">&#x2261;</span>
 	</label>
 	<ul class="menu">
-		<HeaderLink href="/">Home</HeaderLink>		
-		<HeaderLink href="/blog">Blog</HeaderLink>		
-		<HeaderLink href="/about">About</HeaderLink>		
+		<HeaderLink href="/">Home</HeaderLink>
+		<HeaderLink href="/journeys">Journeys</HeaderLink>
+		<HeaderLink href="/faq">F.A.Q.</HeaderLink>
+		<HeaderLink href="/blog">Blog</HeaderLink>	
+		<HeaderLink href="/about">About</HeaderLink>	
 		<HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
 		<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
 
@@ -29,29 +25,32 @@ import { SITE_TITLE } from '../consts';
 		<li class="item button secondary"><a href="#">Sign Up</a></li> -->
 	</ul>
 </nav>
-
+<div class="menu-gap">
+</div>
 
 <header>
-	<h2>
-		{SITE_TITLE}
-	</h2>
-
-	<!-- <NavBurger />
-	<nav class="sidebar">
-		<ul>
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
-			<HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
-			<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
-		</ul>
-	</nav> -->
+	<!-- {SITE_TITLE} -->
+	<!-- <h2>
+	</h2> -->
 </header>
+
 <style>
 	body>header {
 		/* usefule when "position: fixed" is turned-on */
 		padding-top: 80px;
+		padding-bottom: 180px;
+		background-size: cover;
+		background-position: center;
+		background-image: url("https://yt3.googleusercontent.com/qKyoPFlSWaGqYhFaNeOQoMgtep7DTNEzRqv--tUruQ_8MmEfoue8p0zcCpIYUgoQHxHU7a1v3Q=w2120-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj");
 	}
+
+	div.menu-gap {
+		padding-top: 80px;
+	}
+
+	/* h2 {
+		background-image: "https://yt3.googleusercontent.com/qKyoPFlSWaGqYhFaNeOQoMgtep7DTNEzRqv--tUruQ_8MmEfoue8p0zcCpIYUgoQHxHU7a1v3Q=w2120-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj";
+	} */
 
 	nav.container {
 		background-color: var(--background-color);
