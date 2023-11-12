@@ -2,10 +2,20 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import senex from "/assets/senex_mandala_46.png?url";
-import vow from "/assets/goiteia_vow_7.png?url";
-import primal from "/assets/primal_love_1.png?url";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { SITE_TITLE, SITE_DESCRIPTION, type Pic, mapAsset } from "../consts";
+import { sanityClient } from 'sanity:client';
+
+
+const pics : Pic[]  = await sanityClient.fetch(`
+		*[_type == "pic"]{
+      ...,
+      "imageUrl": pic.asset->url
+    }
+	`);
+
+type PicMap = {anima_mundi: Pic, primal_love: Pic, goiteia_vow: Pic};
+
+const picMap = mapAsset(pics) as PicMap;
 ---
 
 <!DOCTYPE html>
@@ -38,7 +48,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         <div class="card toggle hug-up">
           <!-- <div class="photo" style={`background-image: url(${senex})`}></div> -->
           <div class="flex-4">
-            <img src={senex} />
+            <img src={picMap.anima_mundi.imageUrl} />
           </div>
 
           <div class="flex-2">
@@ -62,7 +72,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         <div class="card toggle">
 			    <!-- <div class="photo" style={`background-image: url(${primal})`}></div> -->
           <div class="flex-4">
-            <img src={primal} />
+            <img src={picMap.primal_love.imageUrl} />
           </div>
 
           <div class="flex-2">
@@ -85,7 +95,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         <div class="card toggle">
           <!-- <div class="photo" style={`background-image: url(${vow})`}></div> -->
           <div class="flex-4" >
-            <img src={vow} />
+            <img src={picMap.goiteia_vow.imageUrl} />
           </div>
           <div class="flex-2">
             <hgroup>

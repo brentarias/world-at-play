@@ -2,11 +2,19 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import bio from "/assets/Peterson_square.png?url";
-// import bio from "../assets/Peterson_square.png?url";
-// import bio2 from "../assets/Brent_plain.jpg?url";
-import bio2 from "/assets/Peterson_square_sitting_4.webp?url";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { SITE_TITLE, SITE_DESCRIPTION, type Pic, mapAsset } from "../consts";
+import { sanityClient } from 'sanity:client';
+
+const pics : Pic[]  = await sanityClient.fetch(`
+		*[_type == "pic"]{
+      ...,
+      "imageUrl": pic.asset->url
+    }
+	`);
+
+type PicMap = {bio_brent_1: Pic, bio_brent_2: Pic};
+
+const picMap = mapAsset(pics) as PicMap;
 ---
 
 <!DOCTYPE html>
@@ -29,7 +37,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
           <div class="card reverse">
             <!-- <div class="height-1 flex-2 photo" style={`background-image: url(${bio})`}></div> -->
             <div class="flex-2">
-              <img src={bio} />
+              <img src={picMap.bio_brent_1.imageUrl} />
             </div>            
             <div class="flex-3">
               <hgroup>
@@ -73,7 +81,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
       <section class="dinkus">
         <div class="card">
           <div class="flex-2">
-            <img src={bio2} />
+            <img src={picMap.bio_brent_2.imageUrl} />
           </div>
           <div class="flex-3">
             <hgroup>
