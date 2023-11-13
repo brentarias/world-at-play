@@ -2,6 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import EmailSubscribe from "../components/EmailSubscribe.astro";
 import { SITE_TITLE, SITE_DESCRIPTION, type Pic, mapAsset } from "../consts";
 import { sanityClient } from 'sanity:client';
 
@@ -106,7 +107,7 @@ const picMap = mapAsset(pics) as PicMap;
       </section>
 
       <section class="dinkus">
-        <h1>A Beginning..</h1>
+        <h1>A Beginning.</h1>
         <blockquote>
           "The strength of a person's spirit would then be measured by how much 'truth' 
           he could tolerate, or more precisely, to what extent he needs to have it diluted, 
@@ -118,6 +119,8 @@ const picMap = mapAsset(pics) as PicMap;
           "...Enter His gates with thanksgiving..."
           <footer><cite>-Psalm 100</cite></footer>
         </blockquote>
+        <h1>Keep in Touch...</h1>
+        <EmailSubscribe />
       </section>
 
     </main>
