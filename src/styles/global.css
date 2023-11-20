@@ -39,6 +39,9 @@
 .hug-up{
 	margin-top: 40px !important;
 }
+.push-down{
+  margin-top: 80px !important;
+}
 
 .card {
 	border: var(--border-width) solid var(--card-border-color);
