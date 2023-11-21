@@ -20,9 +20,6 @@ const posts = await sanityClient.fetch(`*[_type == "post" && defined(publishedAt
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
-			main {
-				width: 960px;
-			}
 			ul {
 				display: flex;
 				flex-wrap: wrap;
