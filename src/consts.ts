@@ -4,7 +4,7 @@ import { type Image, type SanityDocument, type Slug } from 'sanity';
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 export const SITE_TITLE = 'SOUL SOVEREIGNTY';
-export const SITE_DESCRIPTION = 'Welcome to my website!';
+export const SITE_DESCRIPTION = 'Journey into conscious awakening. Find your purpose, and the source of your power.  Connect with your True Self.';
 
 type NamedAsset = {
 	id: Slug // has property called 'current' of type string

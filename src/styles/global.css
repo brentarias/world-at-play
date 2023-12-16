@@ -1,9 +1,10 @@
 * {
 	/* box-sizing: border-box; */
-	font-family: "GothicLight";
+	/* font-family: "Eagle Lake", serif; */
+	font-family: "Fondamento", serif;
 	--font-family: "GothicLight";
-	--font-weight: 600;
-	--font-size: 20px;
+	--font-weight: 400;
+	--font-size: 22px;
 }
 
 

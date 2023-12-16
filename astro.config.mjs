@@ -9,7 +9,7 @@ const dataset = "blog";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://soulsovereignty.earth',
   integrations: [mdx(), sitemap(), sanity({
       projectId,
       dataset,

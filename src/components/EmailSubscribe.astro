@@ -1,10 +1,8 @@
 ---
+
 ---
 
-<link
-  rel="stylesheet"
-  href="https://sibforms.com/forms/end-form/build/sib-styles.css"
-/>
+<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css" />
 
 <div
   class="sib-form"
@@ -290,6 +288,31 @@
       </form>
     </div>
   </div>
+  <script type="text/javascript">
+    window.REQUIRED_CODE_ERROR_MESSAGE = "Please choose a country code";
+    window.LOCALE = "en";
+    window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE =
+      "The information provided is invalid. Please review the values you enetered and try again.";
+  
+    window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank. ";
+  
+    window.GENERIC_INVALID_MESSAGE =
+      "The information provided is invalid. Please review the values you enetered and try again.";
+  
+    window.translation = {
+      common: {
+        selectedList: "{quantity} list selected",
+        selectedLists: "{quantity} lists selected",
+      },
+    };
+  
+    var AUTOHIDE = Boolean(1);
+  </script>
+  
+  <script src="https://sibforms.com/forms/end-form/build/main.js" defer></script>
+  
+  <script src="https://www.google.com/recaptcha/api.js?hl=en" defer></script>
+  
 </div>
 
 <style>
@@ -344,27 +367,3 @@
   }
 </style>
 
-<script type="text/javascript">
-  window.REQUIRED_CODE_ERROR_MESSAGE = "Please choose a country code";
-  window.LOCALE = "en";
-  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE =
-    "The information provided is invalid. Please review the values you enetered and try again.";
-
-  window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank. ";
-
-  window.GENERIC_INVALID_MESSAGE =
-    "The information provided is invalid. Please review the values you enetered and try again.";
-
-  window.translation = {
-    common: {
-      selectedList: "{quantity} list selected",
-      selectedLists: "{quantity} lists selected",
-    },
-  };
-
-  var AUTOHIDE = Boolean(1);
-</script>
-
-<script src="https://sibforms.com/forms/end-form/build/main.js" defer></script>
-
-<script src="https://www.google.com/recaptcha/api.js?hl=en" defer></script>
