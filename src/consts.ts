@@ -17,16 +17,19 @@ export type Pic = NamedAsset & SanityDocument & {
 	imageUrl: string //derived property
 }
 
-export type Post = SanityDocument & {
+export type BasePost = {
+	pubDate: Date,
+	updatedDate?: Date,
+	title: string,
+	mainImage: Image  
+}
+
+export type Post = SanityDocument & BasePost & {
 	body: {
 		title: string;
 	}
 	publishedAt: string,
-	pubDate: Date,
-	updatedDate?: Date,
-	title: string,
-	slug: Slug,
-	mainImage: Image
+	slug: Slug
 }
 
 // Version 1

@@ -1,21 +1,30 @@
 * {
 	/* box-sizing: border-box; */
-	/* font-family: "Eagle Lake", serif; */
-	font-family: "Fondamento", serif;
-	--font-family: "GothicLight";
+	/* font-family: "Eagle Lake", serif;
 	--font-weight: 400;
-	--font-size: 22px;
+	--font-size: 20px; */
+
+  font-family: "Lancelot", serif;
+	--font-weight: 500;
+	--font-size: 26px;
+
+	/* font-family: "Fondamento", serif;
+	--font-weight: 400;
+	--font-size: 22px; */
+
+  --font-family: "GothicLight";
+  /* --font-family: "Uncial"; */
 }
 
 
 /* Register your custom font family and tell the browser where to find it. */
-@font-face {
+/* @font-face {
 	font-family: 'Uncial';
 	src: url('https://fonts.gstatic.com/s/uncialantiqua/v20/N0bM2S5WOex4OUbESzoESK-i-MfWQZQ.woff2') format('woff2');
 	font-weight: normal;
 	font-style: normal;
 	font-display: swap;
-} 
+}  */
 
 @font-face {
 	font-family: 'GothicLight';

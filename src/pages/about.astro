@@ -1,12 +1,25 @@
 ---
 import Layout from '../layouts/BlogPost.astro';
+import { type Pic, mapAsset, type Post } from "../consts";
+import { sanityClient } from 'sanity:client';
+
+const pics : Pic[]  = await sanityClient.fetch(`
+		*[_type == "pic"]{
+      ...,
+      "imageUrl": pic.asset->url
+    }
+	`);
+
+type PicMap = {bio_brent_3: Pic};
+
+const picMap = mapAsset(pics) as PicMap;
+
 ---
 
 <Layout
 	title="About Me"
-	description="testing"
 	pubDate={new Date('November 11 2023')}
-	heroImage="/assets/Peterson_square_sitting_3.jpg"
+	mainImage={picMap.bio_brent_3.pic}
 >
   <div class="dinkus">
 	<p>
