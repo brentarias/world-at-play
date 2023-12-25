@@ -84,9 +84,12 @@
 	
 	*/
 
-	& div>img {
-		width: 100%;
-	}
+  & div>img {
+    min-height: 400px;
+    object-fit:cover;
+    overflow: hidden;
+    /* padding: 80px 80px; */
+  }
 
 	.flex-4 {
 		flex: 4;
@@ -115,6 +118,12 @@
 		>.photo {
 			padding: 100px;
 		}
+
+    & div>img {
+      min-height:unset;
+      max-height: 300px;
+    }
+  
 	}
 
 	.card:nth-child(odd) {

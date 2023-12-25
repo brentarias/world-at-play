@@ -2,6 +2,19 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
+import { type Pic, mapAsset } from "../consts";
+import { sanityClient } from 'sanity:client';
+
+const pics : Pic[]  = await sanityClient.fetch(`
+		*[_type == "pic"]{
+      ...,
+      "imageUrl": pic.asset->url
+    }
+	`);
+
+type PicMap = {compass_seal_1: Pic};
+
+const picMap = mapAsset(pics) as PicMap;
 
 export interface Props {
 	title: string;
@@ -11,8 +24,8 @@ export interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
----
+const { title, description, image = picMap.compass_seal_1.imageUrl } = Astro.props;
+--- 
 <!-- Google tag (gtag.js) - Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKHT648PCK"></script>
 <script type="text/javascript">
