@@ -2,6 +2,23 @@
 import HeaderLink from './HeaderLink.astro';
 import NavBurger from '../components/NavBurger.astro';
 import { SITE_TITLE } from '../consts';
+
+import { type Pic, mapAsset } from "../consts";
+import { sanityClient } from 'sanity:client';
+
+const pics : Pic[]  = await sanityClient.fetch(`
+		*[_type == "pic"]{
+      ...,
+      "imageUrl": pic.asset->url
+    }
+	`);
+
+type PicMap = {hero_banner: Pic};
+
+const picMap = mapAsset(pics) as PicMap;
+// Embedding the CSS 'url' function directly in the CSS variable
+// is necessary, or this will not work.
+const heroBanner = `url(${picMap.hero_banner.imageUrl})`;
 ---
 
 <nav class="container">
@@ -34,14 +51,14 @@ import { SITE_TITLE } from '../consts';
 	</h2> -->
 </header>
 
-<style>
+<style define:vars={{heroBanner}}>
 	body>header {
 		/* usefule when "position: fixed" is turned-on */
 		padding-top: 80px;
 		padding-bottom: 180px;
 		background-size: cover;
 		background-position: center;
-		background-image: url("https://yt3.googleusercontent.com/qKyoPFlSWaGqYhFaNeOQoMgtep7DTNEzRqv--tUruQ_8MmEfoue8p0zcCpIYUgoQHxHU7a1v3Q=w2120-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj");
+		background-image: var(--heroBanner);
 	}
 
 	div.menu-gap {
