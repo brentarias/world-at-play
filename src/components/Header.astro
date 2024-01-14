@@ -2,6 +2,7 @@
 import HeaderLink from './HeaderLink.astro';
 import NavBurger from '../components/NavBurger.astro';
 import { SITE_TITLE } from '../consts';
+import { Icon } from 'astro-icon/components'
 
 import { type Pic, mapAsset } from "../consts";
 import { sanityClient } from 'sanity:client';
@@ -20,38 +21,71 @@ const picMap = mapAsset(pics) as PicMap;
 // is necessary, or this will not work.
 const heroBanner = `url(${picMap.hero_banner.imageUrl})`;
 ---
+<div class="menubar container">
+  <center>
+    <a title="Youtube" rel="external" target="_blank" href="https://youtube.com/@SoulSovereignty-Salt/videos">
+      <Icon name="youtube" />
+    </a>
+    <a title="Rumble" rel="external" target="_blank" href="#">
+      <Icon name="rumble" />
+    </a>
+    <a title="Locals" rel="external" target="_blank" href="https://soulsovereignty.locals.com/">
+      <Icon name="locals" />
+    </a>
+    <a title="TikTok" rel="external" target="_blank" href="#">
+      <Icon name="tiktok" />
+    </a>
+    <a title="Facebook" rel="external" target="_blank" href="https://www.facebook.com/profile.php?id=100083325167088">
+      <Icon name="facebook" />
+    </a>
+  </center>
 
-<nav class="container">
-	<ul>
-		<li class="logo"><a href="/">{SITE_TITLE}</a></li>
-	</ul>
-	<input class="menu-btn" type="checkbox" id="menu-btn" />
-	<label class="menu-icon" for="menu-btn">
-		<span class="nav-icon" style="font-size: 1.6em">&#x2261;</span>
-	</label>
-	<ul class="menu">
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/journeys">Journeys</HeaderLink>
-		<HeaderLink href="/faq">F.A.Q.</HeaderLink>
-		<HeaderLink href="/blog">Blog</HeaderLink>	
-		<HeaderLink href="/about">About</HeaderLink>	
-		<HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
-		<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
+  <nav>
+    <ul>
+      <li class="logo"><a href="/">{SITE_TITLE}</a></li>
+    </ul>
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn">
+      <span class="nav-icon" style="font-size: 1.6em">&#x2261;</span>
+    </label>
+    <ul class="menu">
+      <HeaderLink href="/">Home</HeaderLink>
+      <HeaderLink href="/journeys">Journeys</HeaderLink>
+      <HeaderLink href="/faq">F.A.Q.</HeaderLink>
+      <HeaderLink href="/blog">Blog</HeaderLink>
+      <HeaderLink href="/about">About</HeaderLink>
+    </ul>
+  </nav>
+</div>
 
-		<!-- <li class="item button"><a href="#">Login</a></li>
-		<li class="item button secondary"><a href="#">Sign Up</a></li> -->
-	</ul>
-</nav>
 <div class="menu-gap">
 </div>
 
-<header>
+<header style={{ '--heroBanner': heroBanner }} >
 	<!-- {SITE_TITLE} -->
 	<!-- <h2>
 	</h2> -->
 </header>
 
-<style define:vars={{heroBanner}}>
+<style>
+
+  [data-icon] {
+    font-size: 2em;
+  }
+
+  [data-icon]:hover {
+    /* 
+    This selector is part of astro-icon documentation: 
+    https://www.astroicon.dev/guides/styling/ 
+    In part this approach is needed, because astro-icon seems
+    to strip out or otherwise manipulate the svg tag attributes.
+    Also, normal SVG manipulation presumes the 'fill' directive
+    for color, but astro-icon instead uses 'color'.  
+    */
+    color: goldenrod;
+    transition: color 0.4s ease;
+  }
+
 	body>header {
 		/* usefule when "position: fixed" is turned-on */
 		padding-top: 80px;
@@ -65,15 +99,19 @@ const heroBanner = `url(${picMap.hero_banner.imageUrl})`;
 		padding-top: 80px;
 	}
 
-	/* h2 {
-		background-image: "https://yt3.googleusercontent.com/qKyoPFlSWaGqYhFaNeOQoMgtep7DTNEzRqv--tUruQ_8MmEfoue8p0zcCpIYUgoQHxHU7a1v3Q=w2120-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj";
-	} */
-
-	nav.container {
+  .menubar {
 		background-color: var(--background-color);
+    /* with a non-inline position configured, the sense
+       of width is lost, and thus must be specified explicity.
+       Do this either with the a width property, or pairing
+       with the pico CSS `container` class */
 		position: fixed;
 		z-index: 1;
+
 		overflow: hidden;
+  }
+
+	nav {
 		align-items: center;
 	}
 
@@ -83,9 +121,9 @@ const heroBanner = `url(${picMap.hero_banner.imageUrl})`;
 		user-select: none;
 	}
 
-	
+
 @media (width < 48em) {
-	nav.container {
+	nav {
 		flex-wrap: wrap;
 		& .menu-icon {
 			display:block;
