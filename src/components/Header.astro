@@ -14,32 +14,14 @@ const pics : Pic[]  = await sanityClient.fetch(`
     }
 	`);
 
-type PicMap = {hero_banner: Pic};
+type PicMap = {hero_1: Pic};
 
 const picMap = mapAsset(pics) as PicMap;
 // Embedding the CSS 'url' function directly in the CSS variable
 // is necessary, or this will not work.
-const heroBanner = `url(${picMap.hero_banner.imageUrl})`;
+const heroBanner = `url(${picMap.hero_1.imageUrl})`;
 ---
 <div class="menubar container">
-  <center>
-    <a title="Youtube" rel="external" target="_blank" href="https://youtube.com/@SoulSovereignty-Salt/videos">
-      <Icon name="youtube" />
-    </a>
-    <a title="Rumble" rel="external" target="_blank" href="#">
-      <Icon name="rumble" />
-    </a>
-    <a title="Locals" rel="external" target="_blank" href="https://soulsovereignty.locals.com/">
-      <Icon name="locals" />
-    </a>
-    <a title="TikTok" rel="external" target="_blank" href="#">
-      <Icon name="tiktok" />
-    </a>
-    <a title="Facebook" rel="external" target="_blank" href="https://www.facebook.com/profile.php?id=100083325167088">
-      <Icon name="facebook" />
-    </a>
-  </center>
-
   <nav>
     <ul>
       <li class="logo"><a href="/">{SITE_TITLE}</a></li>
@@ -50,9 +32,7 @@ const heroBanner = `url(${picMap.hero_banner.imageUrl})`;
     </label>
     <ul class="menu">
       <HeaderLink href="/">Home</HeaderLink>
-      <HeaderLink href="/journeys">Journeys</HeaderLink>
-      <HeaderLink href="/faq">F.A.Q.</HeaderLink>
-      <HeaderLink href="/blog">Blog</HeaderLink>
+      <HeaderLink href="/philosophy">Philosophy</HeaderLink>
       <HeaderLink href="/about">About</HeaderLink>
     </ul>
   </nav>

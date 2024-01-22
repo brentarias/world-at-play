@@ -3,8 +3,8 @@ import { type Image, type SanityDocument, type Slug } from 'sanity';
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-export const SITE_TITLE = 'SOUL SOVEREIGNTY';
-export const SITE_DESCRIPTION = 'Journey into conscious awakening. Find your purpose, and the source of your power.  Connect with your True Self.';
+export const SITE_TITLE = 'World At Play';
+export const SITE_DESCRIPTION = 'Interactive entertainment expertise: ideation, marketing, planning, production, execution, delivery.';
 
 type NamedAsset = {
 	id: Slug // has property called 'current' of type string

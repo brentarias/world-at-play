@@ -12,7 +12,7 @@ const pics : Pic[]  = await sanityClient.fetch(`
     }
 	`);
 
-type PicMap = {compass_seal_1: Pic};
+type PicMap = {hero_1: Pic};
 
 const picMap = mapAsset(pics) as PicMap;
 
@@ -24,7 +24,7 @@ export interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = picMap.compass_seal_1.imageUrl } = Astro.props;
+const { title, description, image = picMap.hero_1.imageUrl } = Astro.props;
 --- 
 <!-- Google tag (gtag.js) - Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKHT648PCK"></script>
@@ -65,6 +65,8 @@ const { title, description, image = picMap.compass_seal_1.imageUrl } = Astro.pro
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={new URL(image, Astro.url)} />
 <!-- <link href="https://fonts.googleapis.com/css2?family=Eagle+Lake&family=Eczar&family=Fondamento&family=Lancelot&family=Cormorant+Upright:wght@500&display=swap" rel="stylesheet"> -->
-<link href="https://fonts.googleapis.com/css2?family=Eagle+Lake&family=Cormorant+Upright:wght@500&display=swap" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css2?family=Eagle+Lake&family=Cormorant+Upright:wght@500&display=swap" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Oswald:500,600" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
 

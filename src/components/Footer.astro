@@ -1,9 +1,11 @@
 ---
+import { SITE_TITLE } from '../consts';
 const today = new Date();
+
 ---
 
 <footer>
-	&copy; {today.getFullYear()} SOUL SOVEREIGNTY. All rights reserved.
+	&copy; {today.getFullYear()} - {SITE_TITLE.toUpperCase()}. All rights reserved.
 </footer>
 <style>
 	footer {

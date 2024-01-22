@@ -3,8 +3,8 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import sanity from "@sanity/astro";
 import icon from "astro-icon";
-const projectId = "w5d9vy16";
-const dataset = "blog";
+const projectId = "zs2uhttl";
+const dataset = "production";
 
 
 // https://astro.build/config
@@ -19,8 +19,8 @@ export default defineConfig({
       useCdn: false
     }),
     icon({iconDir: "src/icons"})]
-  // ,server: {
-  //   port: 4321,
-  //   host: true
-  // }   
+    ,server: {
+      port: 4322,
+      host: true
+    }   
 });

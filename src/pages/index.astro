@@ -5,6 +5,9 @@ import Footer from "../components/Footer.astro";
 import EmailSubscribe from "../components/EmailSubscribe.astro";
 import { SITE_TITLE, SITE_DESCRIPTION, type Pic, mapAsset } from "../consts";
 import { sanityClient } from 'sanity:client';
+import SanityImage from "../components/SanityImage.astro";
+import Carousel from "../components/Carousel.astro";
+import CardBox from "../components/CardBox.astro";
 
 const pics : Pic[]  = await sanityClient.fetch(`
 		*[_type == "pic"]{
@@ -13,9 +16,13 @@ const pics : Pic[]  = await sanityClient.fetch(`
     }
 	`);
 
-type PicMap = {bio_brent_1: Pic, bio_brent_2: Pic};
+type PicMap = {
+  bio_roger_1: Pic
+};
 
 const picMap = mapAsset(pics) as PicMap;
+
+
 ---
 
 <!DOCTYPE html>
@@ -27,103 +34,41 @@ const picMap = mapAsset(pics) as PicMap;
     <Header title={SITE_TITLE} />
     <main>
       <section>
-        <h1 class="centered">THAT WE MAY ALL AWAKEN, TOGETHER</h1>
+        <h1 class="centered">LET'S GET READY TO RUMBLE!</h1>
         <p>
-          Mankind must transform if we are to thrive and fulfill our destiny, no less survive the coming darkness.  If you have 
-          found this message, you are invited to explore further.
+          Maximize earnings on game development projects and titles, with expertise 
+          spanning your entire effort: niche selection, marketing, asset acquisition 
+          and licensing, dev team building, publicity engagements, and more.
         </p>
 
         <!-- Card 1 -->
-        <div class="dinkus">
-          <div class="card reverse">
+        <div>
+          <div class="card-simple reverse">
             <!-- <div class="height-1 flex-2 photo" style={`background-image: url(${bio})`}></div> -->
-            <div class="flex-2 round">
-              <img src={picMap.bio_brent_1.imageUrl} />
+            <div class="flex-3 round">
+              <img src={picMap.bio_roger_1.imageUrl} />
             </div>            
             <div class="flex-3">
               <hgroup>
-                <h1>Welcome, Seeker</h1>
-                <h2>My name is Brent Arias.</h2>
+                <h1>Roger Arias</h1>
+                <h2>Interactive entertainment consultant</h2>
               </hgroup>
-              <p>
-                My purpose is both to learn and spread the knowledge of being FULLY human, with
-                all the transcendent strength, beauty, and dignity of that birthright.  I offer
-                online instruction (via youtube, X, Locals, and Rumble) as well as an invitation to
-                forgotten paths of initiation and transformation - sacred journeys - for you to 
-                discover <em>the source of your power</em>.   
-              </p>
+              <blockquote>
+                Success in the Interactive Entertainment Industry is a synergy of market awareness, iterative product improvement, and integrated team disciplines.   
+              </blockquote>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="dinkus">
-        <h1>Do You <em>Know</em> The Question?</h1>
-        <p>
-          Despite having more material wealth and greater freedoms than prior generations, we have today more 
-          broken relationships, depression, addiction, sickness and financial anxiety than ever before.  Personal wellness
-          has languished between the old ways we've abandoned or forgotten...and the new ways we've yet to discover.
-        </p>
-        <blockquote>
-          One does not become enlightened by imagined figures of light, but by making the darkness conscious.
-          The latter procedure, however, is disagreeable and therefore not popular.
-          <footer><cite>-Carl Jung</cite></footer>
-        </blockquote>
-        <p>
-          Soul Sovereignty is the path of healing and maturation of Self as we enter the third age 
-          of the second turn of our world. The call towards this ascent is for each of us to hear and, 
-          to the best of our ability, make our response.  Find who you really are, and tell your story, lest 
-          these things be dictated to you by forces of decay.  
-        </p><br />
-      </section>
+      <Carousel />
+      <br />
+      <br />
 
-
-      <!-- Card 2 -->
-      <section class="dinkus">
-        <div class="card">
-          <div class="flex-2 round">
-            <img src={picMap.bio_brent_2.imageUrl} />
-          </div>
-          <div class="flex-3">
-            <hgroup>
-              <h1>Do You Truly Know What You Want?</h1>
-              <h2>Would you like to find out?</h2>
-            </hgroup>
-            <p>
-              Our real desires and potential are well protected
-              behind a lifetime of lies we've told ourselves or allowed 
-              ourselves to be told.  Repurposing a quote from the movie The Matrix:
-            </p>
-              <blockquote>
-               "Why do my eyes hurt?"<br />"...Because you have never used them before."
-              </blockquote>
-            <p>
-              I ask that you be ready to take yourself on.  The real you
-              has so much more life to live, and to give.  Let's walk together,
-              finding our Soul Sovereignty.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="dinkus">
-        <h1>A Beginning.</h1>
-        <blockquote>
-          "The strength of a person's spirit would then be measured by how much 'truth' 
-          he could tolerate, or more precisely, to what extent he needs to have it diluted, 
-          disguised, sweetened, muted, falsified."
-          <footer><cite>-Friedrich Nietzsche, Beyond Good and Evil</cite></footer>
-        </blockquote>
-
-        <blockquote>
-          "...Enter His gates with thanksgiving..."
-          <footer><cite>-Psalm 100</cite></footer>
-        </blockquote>
-        <h1>Keep in Touch...</h1>
-        <EmailSubscribe />
-      </section>
-
+      <CardBox />
+      
     </main>
     <Footer />
   </body>
 </html>
+
