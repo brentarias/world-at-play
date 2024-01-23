@@ -1,6 +1,7 @@
 ---
 import imageUrlBuilder from "@sanity/image-url";
 import { sanityClient } from "sanity:client";
+import { Image } from 'astro:assets';
 
 
 const builder = imageUrlBuilder(sanityClient)
@@ -18,4 +19,7 @@ const image = node && builder
   .auto('format')
 ---
 
-{image && <img src={image.url()} alt={node.alt || ""} title={node.alt} />}
+<!-- The `Image` component uses `getImage()` under the covers,
+which causes Astro to download/inline the image within its
+prod-build distro. -->
+{image && <Image width={width} height={height} src={image.url()} alt={node.alt || ""} title={node.alt} />}

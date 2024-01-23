@@ -10,6 +10,9 @@ const dataset = "production";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://soulsovereignty.earth',
+  image: {
+    domains: ["cdn.sanity.io"]
+  },
   integrations: [
     mdx(), 
     sitemap(), 

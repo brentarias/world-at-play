@@ -22,8 +22,6 @@ const cards : Card[]  = await sanityClient.fetch(`
       "imageUrl": pic.asset->url
     }
 	`);
-
-console.log(cards);
 ---
 
 <!DOCTYPE html>
@@ -40,7 +38,7 @@ console.log(cards);
         cards.map((card, index:number) => (
         <div class="card-simple toggle hug-up">
           <div class="flex-2">
-            <SanityImage node={card.pic} />
+            <SanityImage height={400} width={415} node={card.pic} />
           </div>
 
           <div class="flex-3">

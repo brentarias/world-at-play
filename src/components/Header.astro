@@ -1,8 +1,7 @@
 ---
 import HeaderLink from './HeaderLink.astro';
-import NavBurger from '../components/NavBurger.astro';
 import { SITE_TITLE } from '../consts';
-import { Icon } from 'astro-icon/components'
+import { getImage } from "astro:assets";
 
 import { type Pic, mapAsset } from "../consts";
 import { sanityClient } from 'sanity:client';
@@ -17,9 +16,19 @@ const pics : Pic[]  = await sanityClient.fetch(`
 type PicMap = {hero_1: Pic};
 
 const picMap = mapAsset(pics) as PicMap;
+const backgroundMeta = { 
+  src: picMap.hero_1.imageUrl,
+  width: 1024,
+  height: 529,
+  format: "jpg"
+} as ImageMetadata;
+
+// Astro's 'getImage' will "inline" the image.
+const background = await getImage(backgroundMeta);
 // Embedding the CSS 'url' function directly in the CSS variable
 // is necessary, or this will not work.
-const heroBanner = `url(${picMap.hero_1.imageUrl})`;
+const heroBanner = `url(${background.src})`;
+// const heroBanner = `url(${picMap.hero_1.imageUrl})`;
 ---
 <div class="menubar container">
   <nav>
@@ -86,7 +95,7 @@ const heroBanner = `url(${picMap.hero_1.imageUrl})`;
        Do this either with the a width property, or pairing
        with the pico CSS `container` class */
 		position: fixed;
-		z-index: 1;
+		z-index: 5;
 
 		overflow: hidden;
   }
