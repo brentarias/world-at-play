@@ -1,34 +1,39 @@
 ---
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
+// Astro discord discussion revealed that `type ImageMetadata` should never be
+// used with remote images.  Instead use `ImageTransform`.
+import { type ImageTransform } from 'astro';
 import { getImage } from "astro:assets";
 
-import { type Pic, mapAsset } from "../consts";
 import { sanityClient } from 'sanity:client';
 
-const pics : Pic[]  = await sanityClient.fetch(`
-		*[_type == "pic"]{
-      ...,
-      "imageUrl": pic.asset->url
+const pics = await sanityClient.fetch(`
+		*[_type == "pic" && id.current == "hero_1"]{
+      'meta': {
+        'src': pic.asset->url,
+        'height': pic.asset->metadata.dimensions.height,
+        'width': pic.asset->metadata.dimensions.width,
+        'format': pic.asset->extension
+      }
     }
 	`);
 
-type PicMap = {hero_1: Pic};
+const pic = pics[0];
 
-const picMap = mapAsset(pics) as PicMap;
+// All this effort, merely so that the backgroun
+// image is downloaded locally, but without any
+// transformation.
 const backgroundMeta = { 
-  src: picMap.hero_1.imageUrl,
-  width: 1024,
-  height: 529,
-  format: "jpg"
-} as ImageMetadata;
+  // src: pic.imageUrl,
+  ...pic.meta
+} as ImageTransform;
 
 // Astro's 'getImage' will "inline" the image.
 const background = await getImage(backgroundMeta);
 // Embedding the CSS 'url' function directly in the CSS variable
 // is necessary, or this will not work.
 const heroBanner = `url(${background.src})`;
-// const heroBanner = `url(${picMap.hero_1.imageUrl})`;
 ---
 <div class="menubar container">
   <nav>

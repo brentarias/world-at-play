@@ -1,97 +1,26 @@
 ---
-import { type Pic, mapAsset } from "../consts";
+import { type Card } from "../consts";
 import { sanityClient } from 'sanity:client';
-import SanityImage from "../components/SanityImage.astro";
+import { Image } from 'astro:assets';
 
-const pics : Pic[]  = await sanityClient.fetch(`
-		*[_type == "pic"]{
+const cardWidth = 340;
+
+const cards : Card[]  = await sanityClient.fetch(`
+		*[_type == "carousel" && group == "Services"] | order(sequence asc)
+    {
       ...,
-      "imageUrl": pic.asset->url
+      "imageUrl": pic.asset->url,
+      "caption": title
     }
 	`);
 
-type PicMap = {
-  services_monetization: Pic,
-  services_build: Pic,
-  services_finding: Pic,
-  services_gamification: Pic,
-  services_acquisition: Pic,
-  services_design: Pic,
-};
-
-const picMap = mapAsset(pics) as PicMap;
-
-
-
-const cards = [
-  {
-    title: "Game Design & Production",
-    tagline: "Your expert on site, end to end.",
-    photo: picMap.services_design.pic,
-    description: "Long section of text",
-    soundBites: [
-      "Real big",
-      "Real Awesom",
-      "Full of flavor"
-    ]
-  },
-  {
-    title: "Research & Acquisition",
-    tagline: "Identifying good deals, and how to make them.",
-    photo: picMap.services_acquisition.pic,
-    description: "Long section of text",
-    soundBites: [
-      "Real big",
-      "Real Awesom",
-      "Full of flavor"
-    ]
-  },
-  {
-    title: "Gamification",
-    tagline: "Captivate users, having them come back for more.",
-    photo: picMap.services_gamification.pic,
-    description: "Long section of text",
-    soundBites: [
-      "Real big",
-      "Real Awesom",
-      "Full of flavor"
-    ]
-  },
-  {
-    title: "Finding Your Team",
-    tagline: "Get connected to the right devs, leads, and SME's.",
-    photo: picMap.services_finding.pic,
-    description: "Long section of text",
-    soundBites: [
-      "Real big",
-      "Real Awesom",
-      "Full of flavor"
-    ]
-  },
-  {
-    title: "What to Build & Why",
-    tagline: "Pull from years of expertise - what does and does not sell.",
-    photo: picMap.services_build.pic,
-    description: "Long section of text",
-    soundBites: [
-      "Real big",
-      "Real Awesom",
-      "Full of flavor"
-    ]
-  },
-  {
-    title: "Monetization",
-    tagline: "Create consistent money streams from your product.",
-    photo: picMap.services_monetization.pic,
-    description: "Long section of text",
-    soundBites: [
-      "Real big",
-      "Real Awesom",
-      "Full of flavor"
-    ]
-  }
-
-]
+// The description uses a '--' divider bar to distinguish
+// between the tagline and the description.
+cards.forEach(card => {
+  const messages = card.description.split(/--/).filter(Boolean);
+  card.tagline = messages[0];
+  card.description = messages[1] ?? "";
+});
 ---
 
 <!-- Based on the following codepen:
@@ -102,27 +31,21 @@ https://codepen.io/zremboldt/pen/ZvQjOG -->
   <div class="cardBox">
   {
     cards.map((card, index: number) => (
-      <div class="cardContainer inactive">
+      <div class="cardContainer inactive" style={{ '--cardWidth': `${cardWidth}px` }}>
       <div class="card">
         <div class="side front">
           <div class="img">
-            <SanityImage height={240} width={340} node={card.photo} />
+            <Image height={240} width={cardWidth} alt={card.tagline} src={card.imageUrl} />
           </div>
           <div class="info">
-            <h2>{card.title}</h2>
+            <h2>{card.caption}</h2>
             <p>{card.tagline}</p>
           </div>
         </div>
         <div class="side back">
           <div class="info">
             <h2>At a glance</h2>
-            <ul>
-              {
-                card.soundBites.map(bite => (
-                  <li>{bite}</li>
-                ))
-              }
-            </ul>
+            <p>{card.description}</p>
           </div>
         </div>
       </div>
@@ -202,9 +125,9 @@ svg {
   justify-content:space-evenly; }
 
 .cardContainer {
-  width: 340px;
+  width: var(--cardWidth);
   height: 400px;
-  min-width: 340px;
+  min-width: var(--cardWidth);
   min-height: 400px;
   margin: 4px;
   perspective: 1000px; }

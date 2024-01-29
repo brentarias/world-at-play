@@ -1,4 +1,5 @@
 import { type Image, type SanityDocument, type Slug } from 'sanity';
+import { type ImageTransform } from 'astro';
 
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
@@ -14,7 +15,18 @@ export type Pic = NamedAsset & SanityDocument & {
 	caption: string,
 	group: string,
 	pic: Image,
+	imageUrl: string, //derived property
+  meta: ImageTransform
+}
+
+export type Card = SanityDocument & {
+	title: string,
+  tagline: string, //derived property
+  description: string,
+	group: string,
+	pic: Image,
 	imageUrl: string //derived property
+  meta: ImageTransform
 }
 
 export type BasePost = {

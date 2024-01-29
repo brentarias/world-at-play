@@ -2,18 +2,9 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION, type Pic } from "../consts";
+import { SITE_TITLE, SITE_DESCRIPTION, type Card } from "../consts";
 import { sanityClient } from 'sanity:client';
-import { type SanityDocument, type Image } from 'sanity';
-import SanityImage from "../components/SanityImage.astro"
-
-type Card = SanityDocument & {
-	title: string,
-	group: string,
-	pic: Image,
-  description: string,
-	imageUrl: string //derived property
-}
+import { Image } from 'astro:assets';
 
 const cards : Card[]  = await sanityClient.fetch(`
 		*[_type == "carousel" && group == "Philosophy"] | order(sequence asc)
@@ -38,7 +29,7 @@ const cards : Card[]  = await sanityClient.fetch(`
         cards.map((card, index:number) => (
         <div class="card-simple toggle hug-up">
           <div class="flex-2">
-            <SanityImage height={400} width={415} node={card.pic} />
+            <Image height={400} width={415} alt={card.title} src={card.imageUrl} />
           </div>
 
           <div class="flex-3">

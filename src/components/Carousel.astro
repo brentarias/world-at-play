@@ -1,22 +1,27 @@
 ---
 import { sanityClient } from 'sanity:client';
-import { type SanityDocument, type Image } from 'sanity';
-
-type Card = SanityDocument & {
-	title: string,
-	group: string,
-	pic: Image,
-  description: string,
-	imageUrl: string //derived property
-}
+import { type Card } from "../consts";
+import { getImage } from "astro:assets";
 
 const cards : Card[]  = await sanityClient.fetch(`
 		*[_type == "carousel" && group == "Games"]{
       ...,
-      "imageUrl": pic.asset->url
+      'meta': {
+        'src': pic.asset->url,
+        'height': pic.asset->metadata.dimensions.height,
+        'width': pic.asset->metadata.dimensions.width,
+        'format': pic.asset->extension
+      }
     }
 	`);
 
+for (const obj of cards) {
+    // no actual transformation of the image, but this
+    // does cause the image to be "inlined" (that is,
+    // become a local asset of the build).
+    const result = await getImage(obj.meta);
+    obj.imageUrl = result.src;
+}
 
 ---
 
